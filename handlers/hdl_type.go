@@ -55,6 +55,21 @@ func UpdateTypeEndpoint(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// DeleteTypeEndpoint get a ptype
+func DeleteTypeEndpoint(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	code := params["code"]
+
+	// _ = json.NewDecoder(r.Body).Decode(&pcat)
+
+	count := db.DeleteProductType(code)
+	res := map[string]int64{"deleted": count}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(res)
+
+}
+
 // GetTypeEndpoint get a ptype
 func GetTypeEndpoint(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)

@@ -70,6 +70,21 @@ func GetCategoryEndpoint(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// DeleteCategoryEndpoint get a pcat
+func DeleteCategoryEndpoint(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	code := params["code"]
+
+	// _ = json.NewDecoder(r.Body).Decode(&pcat)
+
+	count := db.DeleteProductCategory(code)
+	res := map[string]int64{"deleted": count}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(res)
+
+}
+
 // GetAllCategoryEndpoint get a pcat
 func GetAllCategoryEndpoint(w http.ResponseWriter, r *http.Request) {
 

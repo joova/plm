@@ -66,6 +66,20 @@ func GetProductCategory(code string) models.ProductCategory {
 	return category
 }
 
+// DeleteProductCategory get category
+func DeleteProductCategory(code string) int64 {
+	log.Println("Delete category:", code)
+
+	filter := bson.M{"code": code}
+	res, err := db.Collection("plm_types").DeleteOne(context.TODO(), filter)
+	if err != nil {
+		log.Print(err)
+	}
+
+	log.Println("Delete Count : ", res.DeletedCount)
+	return res.DeletedCount
+}
+
 // GetAllProductCategory get category
 func GetAllProductCategory() []models.ProductCategory {
 	log.Println("Get all category")

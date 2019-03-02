@@ -51,6 +51,20 @@ func UpdateUOM(code string, uom models.UnitOfMeasure) (int64, error) {
 	return res.UpsertedCount, nil
 }
 
+// DeleteUOM get type
+func DeleteUOM(code string) int64 {
+	log.Println("Delete ptype: ", code)
+
+	filter := bson.M{"code": code}
+	res, err := db.Collection("plm_uoms").DeleteOne(context.TODO(), filter)
+	if err != nil {
+		log.Print(err)
+	}
+
+	log.Println("Delete Count : ", res.DeletedCount)
+	return res.DeletedCount
+}
+
 // GetUOM get uom
 func GetUOM(code string) models.UnitOfMeasure {
 	log.Println("Get uom:", code)

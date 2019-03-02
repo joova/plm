@@ -29,7 +29,7 @@ func CreateProductType(ptype models.ProductType) (string, error) {
 
 // UpdateProductType update ptype
 func UpdateProductType(code string, ptype models.ProductType) (int64, error) {
-	log.Println("Update ptype:", ptype.Code)
+	log.Println("Update ptype: ", ptype.Code)
 
 	filter := bson.M{"code": code}
 	data := bson.D{
@@ -49,6 +49,20 @@ func UpdateProductType(code string, ptype models.ProductType) (int64, error) {
 
 	log.Println("Updated ptype code: ", res.UpsertedID)
 	return res.UpsertedCount, nil
+}
+
+// DeleteProductType get type
+func DeleteProductType(code string) int64 {
+	log.Println("Delete ptype: ", code)
+
+	filter := bson.M{"code": code}
+	res, err := db.Collection("plm_types").DeleteOne(context.TODO(), filter)
+	if err != nil {
+		log.Print(err)
+	}
+
+	log.Println("Delete Count : ", res.DeletedCount)
+	return res.DeletedCount
 }
 
 // GetProductType get uom

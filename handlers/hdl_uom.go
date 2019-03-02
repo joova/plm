@@ -55,6 +55,21 @@ func UpdateUOMEndpoint(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// DeleteUOMEndpoint get a ptype
+func DeleteUOMEndpoint(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	code := params["code"]
+
+	// _ = json.NewDecoder(r.Body).Decode(&pcat)
+
+	count := db.DeleteUOM(code)
+	res := map[string]int64{"deleted": count}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(res)
+
+}
+
 // GetUOMEndpoint get a uom
 func GetUOMEndpoint(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
