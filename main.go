@@ -17,7 +17,7 @@ func main() {
 	router := mux.NewRouter()
 	//uom route
 	router.HandleFunc("/api/plm/uoms", hdl.GetAllUOMEndpoint).Methods("GET")
-	router.HandleFunc("/api/plm/uom/{code}", hdl.GetUOMEndpoint).Methods("GET", "OPTIONS")
+	router.HandleFunc("/api/plm/uom/{code}", hdl.GetUOMEndpoint).Methods("GET")
 	router.HandleFunc("/api/plm/uom/{code}", hdl.DeleteUOMEndpoint).Methods("DELETE")
 	router.HandleFunc("/api/plm/uoms/{offset}/{limit}", hdl.GetPagingUOMEndpoint).Methods("GET")
 	router.HandleFunc("/api/plm/uoms/{offset}/{limit}/{text}", hdl.SearchUOMEndpoint).Methods("GET")
@@ -26,7 +26,7 @@ func main() {
 
 	//category route
 	router.HandleFunc("/api/plm/categories", hdl.GetAllCategoryEndpoint).Methods("GET")
-	router.HandleFunc("/api/plm/category/{code}", hdl.GetCategoryEndpoint).Methods("GET", "OPTIONS")
+	router.HandleFunc("/api/plm/category/{code}", hdl.GetCategoryEndpoint).Methods("GET")
 	router.HandleFunc("/api/plm/category/{code}", hdl.DeleteCategoryEndpoint).Methods("DELETE")
 	router.HandleFunc("/api/plm/categories/{offset}/{limit}", hdl.GetPagingCategoryEndpoint).Methods("GET")
 	router.HandleFunc("/api/plm/categories/{offset}/{limit}/{text}", hdl.SearchCategoryEndpoint).Methods("GET")
@@ -35,7 +35,7 @@ func main() {
 
 	//org route
 	router.HandleFunc("/api/plm/types", hdl.GetAllTypeEndpoint).Methods("GET")
-	router.HandleFunc("/api/plm/type/{code}", hdl.CreateTypeEndpoint).Methods("GET", "OPTIONS")
+	router.HandleFunc("/api/plm/type/{code}", hdl.CreateTypeEndpoint).Methods("GET")
 	router.HandleFunc("/api/plm/type/{code}", hdl.DeleteTypeEndpoint).Methods("DELETE")
 	router.HandleFunc("/api/plm/types/{offset}/{limit}", hdl.GetPagingTypeEndpoint).Methods("GET")
 	router.HandleFunc("/api/plm/types/{offset}/{limit}/{text}", hdl.SearchTypeEndpoint).Methods("GET")
