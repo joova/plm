@@ -57,7 +57,7 @@ func GetProductCategory(code string) models.ProductCategory {
 
 	filter := bson.M{"code": code}
 	var category models.ProductCategory
-	err := db.Collection("plm_types").FindOne(context.TODO(), filter).Decode(&category)
+	err := db.Collection("plm_categories").FindOne(context.TODO(), filter).Decode(&category)
 	if err != nil {
 		log.Print(err)
 	}
@@ -71,7 +71,7 @@ func DeleteProductCategory(code string) int64 {
 	log.Println("Delete category:", code)
 
 	filter := bson.M{"code": code}
-	res, err := db.Collection("plm_types").DeleteOne(context.TODO(), filter)
+	res, err := db.Collection("plm_categories").DeleteOne(context.TODO(), filter)
 	if err != nil {
 		log.Print(err)
 	}
