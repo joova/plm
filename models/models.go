@@ -25,11 +25,12 @@ type ProductCategory struct {
 
 // Product product model
 type Product struct {
-	ID       primitive.ObjectID `bson:"_id,omitempty" json:"id,omitempty"`
-	Code     string             `bson:"code" json:"code"`
-	Name     string             `bson:"name" json:"name"`
-	UOM      string             `bson:"uom" json:"uom"`
-	Type     string             `bson:"type" json:"type"`
-	Category string             `bson:"category" json:"category"`
-	Org      primitive.ObjectID `bson:"org,omitempty" json:"org,omitempty"`
+	ID          primitive.ObjectID `bson:"_id,omitempty" json:"id,omitempty"`
+	Code        string             `bson:"code" json:"code"`
+	Name        string             `bson:"name" json:"name"`
+	Description string             `bson:"description" json:"description"`
+	UOM         UnitOfMeasure      `bson:"uom" json:"uom"`
+	Type        ProductType        `bson:"type" json:"type"`
+	Category    ProductCategory    `bson:"category" json:"category"`
+	Org         primitive.ObjectID `bson:"org,omitempty" json:"org,omitempty"`
 }
