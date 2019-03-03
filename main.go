@@ -46,8 +46,9 @@ func main() {
 	// log.Fatal(http.ListenAndServe(":8001", router))
 
 	corsAllowedOriginsObj := handlers.AllowedOrigins([]string{"*"})
-	corsAllowedHeadersObj := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
+	// corsAllowedHeadersObj := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
+	corsAllowedHeadersObj := handlers.AllowedHeaders([]string{"*"})
 	corsExposedHeadersObj := handlers.ExposedHeaders([]string{"Pagination-Count", "Pagination-Limit", "Pagination-Page"})
-	corsAllowedMethodsObj := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"})
+	corsAllowedMethodsObj := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"})
 	log.Fatal(http.ListenAndServe(":8001", handlers.CORS(corsAllowedOriginsObj, corsAllowedHeadersObj, corsExposedHeadersObj, corsAllowedMethodsObj)(router)))
 }
