@@ -1,1 +1,4 @@
 .DS_Store
+vendor
+Gopkg.toml
+Gopkg.lock
