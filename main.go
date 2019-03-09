@@ -44,12 +44,12 @@ func main() {
 
 	//product type route
 	router.HandleFunc("/api/plm/products", hdl.GetAllProductEndpoint).Methods("GET")
-	router.HandleFunc("/api/plm/product/{code}", hdl.CreateProductEndpoint).Methods("GET")
-	router.HandleFunc("/api/plm/product/{code}", hdl.DeleteProductEndpoint).Methods("DELETE")
+	router.HandleFunc("/api/plm/product/{id}", hdl.CreateProductEndpoint).Methods("GET")
+	router.HandleFunc("/api/plm/product/{id}", hdl.DeleteProductEndpoint).Methods("DELETE")
 	router.HandleFunc("/api/plm/products/{offset}/{limit}", hdl.GetPagingProductEndpoint).Methods("GET")
 	router.HandleFunc("/api/plm/products/{offset}/{limit}/{text}", hdl.SearchProductEndpoint).Methods("GET")
 	router.HandleFunc("/api/plm/product", hdl.CreateProductEndpoint).Methods("POST")
-	router.HandleFunc("/api/plm/product/{code}", hdl.UpdateProductEndpoint).Methods("PUT")
+	router.HandleFunc("/api/plm/product/{id}", hdl.UpdateProductEndpoint).Methods("PUT")
 
 	fmt.Println("Starting server on port 8001...")
 	// log.Fatal(http.ListenAndServe(":8001", router))
